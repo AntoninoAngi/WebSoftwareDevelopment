@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Exercise</title>
+    <script src="lib/jquery-3.2.1.min.js"></script>
+          <script type="text/javascript">
+            $(document).ready(function() {
+
+            document.getElementById("submitReverser").addEventListener("click", function () {
+
+              var messaggio = document.getElementById("toBeReversed").value;
+
+              var msg = messaggio.split("").reverse().join("");
+              var json = {"payload": msg};
+              window.parent.postMessage(json, '*');
+
+            });
+            document.getElementById("clearInput").addEventListener("click", function () {
+              var json = {"payload": "INPUT CLEARED"};
+              window.parent.postMessage(json, '*');
+
+            });
+          });
+
+          </script>
+  </head>
+  <body>
+    <form id="reverser">
+      <input id="toBeReversed" name="input" type="text">
+      <input type="submit" id="submitReverser">
+      </form>
+      <button value="Clear Input" id="clearInput">Clear Input</button>
+
+
+</body>
+</html>
